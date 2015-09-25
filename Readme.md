@@ -1,7 +1,11 @@
-# Jakiro
+# jakiro
 [![GoDoc](https://godoc.org/github.com/Gurpartap/jakiro?status.svg)](https://godoc.org/github.com/Gurpartap/jakiro)
 
-Jakiro provides an interface for handling resource actions and JSON encoding/decoding. It also ships with an HTTP and WebSocket implementation of this interface.
+![](http://i1.2pcdn.com/node14/201401/25/article_sub_img/a0doyp0jezdubwfo/2.jpg)
+
+> Image from [dotafire.com](http://www.dotafire.com/dota-2/guide/sandos-guide-to-jakiro-9689). Go there to learn about Jakiro, the dual breath dragon!
+
+`jakiro` provides a lightweight interface for handling resource actions and JSON encoding/decoding. It also ships with an HTTP and WebSocket implementation of this interface.
 
 In other words, you can use the same handler function to serve http as well as websocket requests. You can also roll your own `jakiro.Context` implementation to serve through another medium.
 
@@ -24,7 +28,7 @@ type Context interface {
 
 Similarly, `WebSocketContext` assumes [gorilla/websocket](https://github.com/gorilla/websocket).
 
-Fork away for your choice of RPC or HTTP request multiplexer! Implementations are portable anyway!
+Fork away for your choice of socket, RPC or HTTP request multiplexer! Implementations are portable anyway!
 
 #### Get
 
