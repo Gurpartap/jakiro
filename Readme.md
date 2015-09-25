@@ -16,7 +16,7 @@ type Context interface {
 }
 ```
 
-##### Implementations
+#### Implementations
 
 `jakiro` ships with two implementations of `jakiro.Context`: [`HTTPContext`](https://github.com/Gurpartap/jakiro/blob/master/http_context.go) and [`WebSocketContext`](https://github.com/Gurpartap/jakiro/blob/master/websocket_context.go).
 
@@ -26,13 +26,13 @@ Similarly, `WebSocketContext` assumes [gorilla/websocket](https://github.com/gor
 
 Fork away for your choice of RPC or HTTP request multiplexer! Implementations are portable anyway!
 
-##### Get
+#### Get
 
 ```bash
-$ go get github.com/Gurpartap/jakiro
+go get github.com/Gurpartap/jakiro
 ```
 
-##### Usage
+#### Usage
 
 ```go
 package main
@@ -69,10 +69,10 @@ func main() {
 
 See rest of the [example](https://github.com/Gurpartap/jakiro/tree/master/example) code with CRUD handlers and JSON interfaces usage.
 
-##### Questions? Bugs?
+#### Questions? Bugs?
 
 [Create a new issue](https://github.com/Gurpartap/jakiro/issues/new)
 
-##### License
+#### License
 
 MIT
