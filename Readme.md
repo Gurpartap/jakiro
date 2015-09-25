@@ -67,7 +67,7 @@ func main() {
 }
 ```
 
-See rest of the [example](https://github.com/Gurpartap/jakiro/tree/master/example) code with CRUD handlers and JSON interfaces usage.
+See **rest of the [example](https://github.com/Gurpartap/jakiro/tree/master/example) code** with CRUD handlers and JSON interfaces usage.
 
 #### Questions? Bugs?
 
