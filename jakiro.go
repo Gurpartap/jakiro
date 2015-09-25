@@ -20,6 +20,8 @@
 
 package jakiro
 
+import "encoding/json"
+
 type Context interface {
 	Params() map[string]string
 	Body() []byte
@@ -33,4 +35,16 @@ type ContextError struct {
 	Code    int      `json:"code,omitempty"`
 	Message string   `json:"message,omitempty"`
 	Params  []string `json:"params,omitempty"`
+}
+
+type JSONEncodable interface {
+	ToJSON() ([]byte, error)
+}
+
+type JSONDecodable interface {
+	FromJSON([]byte) error
+}
+
+type JSONDecoderDecodable interface {
+	FromJSONDecoder(*json.Decoder) error
 }

@@ -18,12 +18,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-package jakiro
+package jakiro_websocket
 
 import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/Gurpartap/jakiro"
 	"github.com/gorilla/websocket"
 )
 
@@ -38,8 +39,8 @@ type WebSocketResponse struct {
 }
 
 type WebSocketErrorResponse struct {
-	Status int            `json:"status"`
-	Errors []ContextError `json:"errors"`
+	Status int                   `json:"status"`
+	Errors []jakiro.ContextError `json:"errors"`
 }
 
 type WebSocketContext struct {
@@ -70,7 +71,7 @@ func (ctx *WebSocketContext) JSON(code int, object interface{}) {
 	var res []byte
 	var err error
 
-	if obj, ok := object.(JSONEncodable); ok {
+	if obj, ok := object.(jakiro.JSONEncodable); ok {
 		res, err = obj.ToJSON()
 	} else {
 		res, err = json.MarshalIndent(object, "", "	")
@@ -87,7 +88,7 @@ func (ctx *WebSocketContext) JSON(code int, object interface{}) {
 
 func (ctx *WebSocketContext) Error(code int, err error) {
 	errorResponse := WebSocketErrorResponse{Status: code}
-	errorResponse.Errors = append(errorResponse.Errors, ContextError{
+	errorResponse.Errors = append(errorResponse.Errors, jakiro.ContextError{
 		Message: err.Error(),
 	})
 

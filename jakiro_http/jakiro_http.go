@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-package jakiro
+package jakiro_http
 
 import (
 	"encoding/json"
@@ -26,6 +26,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/Gurpartap/jakiro"
 	"github.com/gorilla/mux"
 )
 
@@ -35,7 +36,7 @@ type HTTPContext struct {
 }
 
 type HTTPErrorResponse struct {
-	Errors []ContextError `json:"errors"`
+	Errors []jakiro.ContextError `json:"errors"`
 }
 
 func NewHTTPContext(writer http.ResponseWriter, request *http.Request) *HTTPContext {
@@ -63,7 +64,7 @@ func (ctx *HTTPContext) JSON(code int, object interface{}) {
 	var res []byte
 	var err error
 
-	if obj, ok := object.(JSONEncodable); ok {
+	if obj, ok := object.(jakiro.JSONEncodable); ok {
 		res, err = obj.ToJSON()
 	} else {
 		res, err = json.MarshalIndent(object, "", "	")
@@ -80,7 +81,7 @@ func (ctx *HTTPContext) JSON(code int, object interface{}) {
 
 func (ctx *HTTPContext) Error(code int, err error) {
 	errorResponse := HTTPErrorResponse{}
-	errorResponse.Errors = append(errorResponse.Errors, ContextError{
+	errorResponse.Errors = append(errorResponse.Errors, jakiro.ContextError{
 		Message: err.Error(),
 	})
 

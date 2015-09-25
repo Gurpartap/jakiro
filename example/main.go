@@ -24,6 +24,7 @@ import (
 	"net/http"
 
 	"github.com/Gurpartap/jakiro"
+	"github.com/Gurpartap/jakiro/jakiro_http"
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
 )
@@ -32,7 +33,7 @@ var DBUsersTable = make(map[int64]*User, 0)
 
 func withJakiro(handlerFunc func(jakiro.Context)) func(http.ResponseWriter, *http.Request) {
 	return func(rw http.ResponseWriter, req *http.Request) {
-		handlerFunc(jakiro.NewHTTPContext(rw, req))
+		handlerFunc(jakiro_http.NewHTTPContext(rw, req))
 	}
 }
 
